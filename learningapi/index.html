@@ -1,0 +1,125 @@
+<!--<html>-->
+<!--    <head>-->
+<!--        <title>City Finder</title>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--    <form>-->
+<!--        Enter A Utah City: <input type="text" id="cityField" value=""><br>-->
+<!--        Suggestion: <span id="txtHint">Empty</span>-->
+<!--        <input id="weatherButton" type="submit" value="Submit">-->
+<!--    </form>-->
+<!--    <p>City</p>-->
+<!--    <textarea id="displayCity">No City</textarea>-->
+<!--    <p>Current Weather</p>-->
+<!--    <div id="weather">No weather</div>-->
+    
+<!--    <script>-->
+<!--    document.getElementById("cityField").addEventListener("keyup", function(event) {-->
+<!--        event.preventDefault();-->
+<!--        const url = "https://csonline.byu.edu/city?q=" +-->
+<!--      document.getElementById("cityField").value;-->
+        <!--/*global fetch*/ fetch(url)-->
+<!--            .then(function(response) {-->
+<!--                return response.json();-->
+<!--            }).then(function(json) {-->
+<!--                console.log(json);-->
+<!--                console.log(json[0]);-->
+<!--                console.log("Got " + json[0].city);-->
+<!--                const everything = document.createElement("ul");-->
+<!--                for (let i = 0; i < json.length; i++) {-->
+<!--                    const value = json[i].city;-->
+<!--                    const listItem = document.createElement("li");-->
+<!--                    listItem.appendChild(document.createTextNode(value));-->
+<!--                    everything.appendChild(listItem);-->
+<!--                };-->
+<!--                const txtHint = document.getElementById("txtHint");-->
+<!--                txtHint.textContent = "";-->
+<!--                txtHint.appendChild(everything);-->
+<!--            });-->
+<!--    });-->
+<!--    </script>-->
+
+<!--    </body>-->
+<!--</html>-->
+
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@mhideomiwa 
+BYU-CS-260
+/
+APItutorial
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+APItutorial/git.html
+@mjcleme
+mjcleme Create git.html
+Latest commit 60c1e9d on Aug 26
+ History
+ 1 contributor
+40 lines (36 sloc)  947 Bytes
+
+<!DOCTYPE html>
+<html>
+<title>GIT Demo</title>
+
+<body>
+<h1>
+Github IDs
+</h1>
+<form id="userform">
+  <input id="user">
+  <input type="submit" value="Go">
+</form>
+<div id="github">
+
+</div>
+</body>
+
+<script>
+document.getElementById("userform").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const id = document.getElementById("user").value;
+    console.log("id is",id);
+    const fullURL = "https://api.github.com/users/" + id;
+    console.log(fullURL);
+    /*global fetch*/fetch(fullURL)
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json);
+      const idResponse = json["id"];
+      const strong = document.createElement("strong");
+      strong.appendChild(document.createTextNode("ID=" + idResponse));
+      
+      const container = document.getElementById("github");
+      container.textContent = "";
+      container.appendChild(strong);
+    });
+  });
+</script>
+</html>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
